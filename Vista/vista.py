@@ -1,13 +1,16 @@
 from tkinter import Text, Button, END, INSERT
 from tkinter.messagebox import showwarning
+import os
 
 class CalculadoraVista:
     def __init__(self, ventana, controlador):
+        #Crear el path absoluto
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        icon_path = os.path.join(current_dir, "../src/icons/icon.ico")
         self.controlador = controlador  # Guarda la referencia al controlador
-
         # Configura la ventana principal
         ventana.title("Calculadora")  # Establece el título de la ventana
-        #ventana.iconbitmap("../src/icons/icon.ico")  # Descomentar para establecer un ícono
+        ventana.iconbitmap(icon_path) # Descomentar para establecer un ícono
         # Configuración de la pantalla para mostrar la expresión
         self.pantalla = Text(ventana, state="disabled", width=40, height=3,
                              background="white", foreground="blue", font=("Helvetica", 15))
