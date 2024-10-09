@@ -19,12 +19,12 @@ Una calculadora simple construida con Python y Tkinter, que permite realizar ope
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu_usuario/nombre_del_repositorio.git
+   git clone https://github.com/Johan962/App_Calculadora_Tkinter.git
 
 2. Navega al directorio del proyecto:
 
     ```bash
-    cd nombre_del_repositorio
+    cd App_Calculadora_Tkinter
     python main.py
 ## Uso
 - Ingrese números y operaciones utilizando los botones en la interfaz gráfica o el teclado.
