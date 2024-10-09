@@ -25,8 +25,6 @@ Una calculadora simple construida con Python y Tkinter, que permite realizar ope
 
     ```bash
     cd nombre_del_repositorio
-
-    ```bash
     python main.py
 ## Uso
 - Ingrese números y operaciones utilizando los botones en la interfaz gráfica o el teclado.
