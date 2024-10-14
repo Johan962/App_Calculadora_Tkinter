@@ -12,48 +12,55 @@ class CalculadoraVista:
         ventana.title("Calculadora")  # Establece el título de la ventana
         #ventana.iconbitmap(icon_path) # Descomentar para establecer un ícono
         # Configuración de la pantalla para mostrar la expresión
-        self.pantalla = Text(ventana, state="disabled", width=40, height=3,
-                             background="white", foreground="blue", font=("Helvetica", 15))
-        self.pantalla.grid(row=0, column=0, columnspan=4, padx=5, pady=5)  # Coloca la pantalla en la cuadrícula
-        
+        self.pantalla = Text(ventana, state="disabled", width=20, height=3,
+                             background="white", foreground="black", font=("Helvetica", 15))
+        self.pantalla.grid(row=0, column=0, columnspan=4, padx=10, pady=10, sticky="nsew")
+
         # Configuración de la pantalla para mostrar el resultado
-        self.pantalla_result = Text(ventana, state="disabled", width=23, height=2,
-                             background="white", foreground="blue", font=("Helvetica", 15))
-        self.pantalla_result.grid(row=1, column=1, columnspan=2)  # Coloca la pantalla de resultados en la cuadrícula
-        
+        self.pantalla_result = Text(ventana, state="disabled", width=18, height=2,
+                             background="white", foreground="black", font=("Helvetica", 15))
+        self.pantalla_result.grid(row=1, column=1, columnspan=2, padx=10, pady=10, sticky="nsew")
+        # Configurar la ventana para que todas las columnas tengan el mismo peso
+        for i in range(4):  # Asigna un peso igual a las 4 columnas
+            ventana.grid_columnconfigure(i, weight=1)
+
+        # Configurar las filas para que se expandan uniformemente (opcional)
+        for i in range(9):  # Ajusta según el número total de filas que tienes
+            ventana.grid_rowconfigure(i, weight=1)
+
         # Creación de botones de deshacer y rehacer
-        self.botonU = self.crearBoton(u"\u2190", escribir=False)  # Botón para deshacer
+        self.botonU = self.crearBoton(u"\u2190", escribir=False, bg="#F39C12", fg="white")  # Botón para deshacer
         self.botonU.config(state="disabled")  # Inicialmente deshabilitado
-        self.botonR = self.crearBoton(u"\u2192", escribir=False)  # Botón para rehacer
+        self.botonR = self.crearBoton(u"\u2192", escribir=False, bg="#F39C12", fg="white")  # Botón para rehacer
         self.botonR.config(state="disabled")  # Inicialmente deshabilitado
 
         # Creación de botones numéricos y de operación
-        boton1 = self.crearBoton(7)
-        boton2 = self.crearBoton(8)
-        boton3 = self.crearBoton(9)
-        boton4 = self.crearBoton(u"\u232B", escribir=False)  # Botón de borrar
-        boton5 = self.crearBoton(4)
-        boton6 = self.crearBoton(5)
-        boton7 = self.crearBoton(6)
-        boton8 = self.crearBoton("C", escribir=False)  # Botón de limpiar
-        boton9 = self.crearBoton(1)
-        boton10 = self.crearBoton(2)
-        boton11 = self.crearBoton(3)
-        boton12 = self.crearBoton(u"\u00F7")  # Botón de división
-        boton13 = self.crearBoton(".")
-        boton14 = self.crearBoton(0)
-        boton15 = self.crearBoton("+")
-        boton16 = self.crearBoton("*")
-        boton17 = self.crearBoton("(")
-        boton18 = self.crearBoton(")")
-        boton19 = self.crearBoton(u"\u221A")  # Botón de raíz
-        boton20 = self.crearBoton("-")
-        boton21 = self.crearBoton("{")
-        boton22 = self.crearBoton("}")
-        boton23 = self.crearBoton("[")
-        boton24 = self.crearBoton("^")  # Botón de potencia
-        boton25 = self.crearBoton("]")
-        boton26 = self.crearBoton("=", escribir=False, ancho=20, alto=1)  # Botón de igual
+        boton1 = self.crearBoton(7,fg="black", bg="#ECF0F1" )
+        boton2 = self.crearBoton(8,fg="black", bg="#ECF0F1")
+        boton3 = self.crearBoton(9,fg="black", bg="#ECF0F1")
+        boton4 = self.crearBoton(u"\u232B", escribir=False, bg="#5DADE2", fg="white")  # Botón de borrar
+        boton5 = self.crearBoton(4,fg="black", bg="#ECF0F1")
+        boton6 = self.crearBoton(5,fg="black", bg="#ECF0F1")
+        boton7 = self.crearBoton(6,fg="black", bg="#ECF0F1")
+        boton8 = self.crearBoton("C", escribir=False, bg="#E74C3C", fg="white")  # Botón de limpiar
+        boton9 = self.crearBoton(1,fg="black", bg="#ECF0F1")
+        boton10 = self.crearBoton(2,fg="black", bg="#ECF0F1")
+        boton11 = self.crearBoton(3,fg="black", bg="#ECF0F1")
+        boton12 = self.crearBoton(u"\u00F7", bg="#2C3E50", fg="white")  # Botón de división
+        boton13 = self.crearBoton(".", bg="#D5DBDB", fg="black")
+        boton14 = self.crearBoton(0,fg="black", bg="#ECF0F1")
+        boton15 = self.crearBoton("+", bg="#2C3E50", fg="white")
+        boton16 = self.crearBoton("*", bg="#2C3E50", fg="white")
+        boton17 = self.crearBoton("(", bg="#BDC3C7", fg="black")
+        boton18 = self.crearBoton(")", bg="#BDC3C7", fg="black")
+        boton19 = self.crearBoton(u"\u221A", bg="#2C3E50", fg="white")  # Botón de raíz
+        boton20 = self.crearBoton("-", bg="#2C3E50", fg="white")
+        boton21 = self.crearBoton("{", bg="#BDC3C7", fg="black")
+        boton22 = self.crearBoton("}", bg="#BDC3C7", fg="black")
+        boton23 = self.crearBoton("[", bg="#BDC3C7", fg="black")
+        boton24 = self.crearBoton("^", bg="#2C3E50", fg="white")  # Botón de potencia
+        boton25 = self.crearBoton("]", bg="#BDC3C7", fg="black")
+        boton26 = self.crearBoton("=", escribir=False, bg="#4CAF50", fg="white" )  # Botón de igual
         
         # Lista de botones para facilitar su disposición en la cuadrícula
         botones = [boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9, boton10,
@@ -62,16 +69,16 @@ class CalculadoraVista:
         contador = 0  # Contador para el manejo de la cuadrícula
         
         # Posiciona los botones en la cuadrícula
-        self.botonU.grid(row=1, column=0)  # Botón de deshacer
-        self.botonR.grid(row=1, column=3)  # Botón de rehacer    
+        self.botonU.grid(row=1, column=0, sticky="nsew", padx=5, pady=5) # Botón de deshacer
+        self.botonR.grid(row=1, column=3, sticky="nsew", padx=5, pady=5)  # Botón de rehacer    
 
         # Disposición de los botones en la cuadrícula
         for fila in range(2, 8):
             for columna in range(4):
-                botones[contador].grid(row=fila, column=columna)
+                botones[contador].grid(row=fila, column=columna, sticky="nsew", padx=5, pady=5)
                 contador += 1
-        botones[24].grid(row=8, column=2)  # Botón de potencia
-        botones[25].grid(row=8, column=0, columnspan=2)  # Botón de igual que ocupa 2 columnas
+        botones[24].grid(row=8, column=2, sticky="nsew", padx=5, pady=5)  # Botón de potencia
+        botones[25].grid(row=8, column=0, sticky="nsew", padx=5, pady=5, columnspan=2)  # Botón de igual que ocupa 2 columnas
         
         # Vincular el evento de teclado
         ventana.bind("<Key>", self.manejar_teclado)  # Asigna el método de manejo de teclado
@@ -117,10 +124,12 @@ class CalculadoraVista:
                 self.controlador.click_boton(".", escribir=True) #Cerrar corchetes                
                 
                 
-    def crearBoton(self, valor, escribir=True, ancho=9, alto=1):
-        # Crea un botón y lo asocia con el controlador
+    def crearBoton(self, valor, escribir=True, ancho=5, alto=2, bg="lightgray", fg="black"):
+        # Crea un botón cuadrado ajustando los valores de ancho y alto
         return Button(text=valor, width=ancho, height=alto, font=("Helvetica", 15),
-                      command=lambda: self.controlador.click_boton(valor, escribir))
+                    bg=bg, fg=fg,
+                    command=lambda: self.controlador.click_boton(valor, escribir))
+
 
     def mostrar_en_pantalla(self, valor):
         # Muestra el valor en la pantalla principal
