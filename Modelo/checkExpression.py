@@ -85,9 +85,11 @@ class CheckExpresion:
         return True
 
     def validar_numeros_decimales(self, expresion):
-        # Expresión regular que permite solo un punto decimal por número, raíz cuadrada y potencias
-        pattern = r'^\s*([-+]?(?:\d+(\.\d+)?|\.\d+)(\s*[\+\-\*/\^]\s*[-+]?(?:\d+(\.\d+)?|\.\d+))*|√\s*([-+]?(?:\d+(\.\d+)?|\.\d+))(\s*[\+\-\*/\^]\s*[-+]?(?:\d+(\.\d+)?|\.\d+))*\s*)$'
-        return bool(re.match(pattern, expresion))
+        if "." in expresion:
+            # Expresión regular que permite solo un punto decimal por número, raíz cuadrada y potencias
+            pattern = r'^\s*([-+]?(?:\d+(\.\d+)?|\.\d+)(\s*[\+\-\*/\^]\s*[-+]?(?:\d+(\.\d+)?|\.\d+))*|√\s*([-+]?(?:\d+(\.\d+)?|\.\d+))(\s*[\+\-\*/\^]\s*[-+]?(?:\d+(\.\d+)?|\.\d+))*\s*)$'
+            return bool(re.match(pattern, expresion))
+        return True
 
     
     def verificar_terminacion(self, expresion):

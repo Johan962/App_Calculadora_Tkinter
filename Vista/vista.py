@@ -101,17 +101,17 @@ class CalculadoraVista:
                 self.controlador.click_boton(u"\u221A", escribir=True)  # Raíz cuadrada (sqrt)
             elif tecla == 'asciicircum':
                 self.controlador.click_boton("^", escribir=True)  # Potencia
-            elif tecla == "(":
+            elif tecla == "parenleft":
                 self.controlador.click_boton("(", escribir=True) #Abrir parentesis
-            elif tecla == ")":
+            elif tecla == "parenright":
                 self.controlador.click_boton(")", escribir=True) #Cerrar parentesis
-            elif tecla == "{":
+            elif tecla == "braceleft":
                 self.controlador.click_boton("{", escribir=True) #Abrir llaves
-            elif tecla == "}":
+            elif tecla == "braceright":
                 self.controlador.click_boton("}", escribir=True) #Cerrar llaves
-            elif tecla == "[":
+            elif tecla == "bracketleft":
                 self.controlador.click_boton("[", escribir=True) #Abrir corcehetes
-            elif tecla == "]":
+            elif tecla == "bracketright":
                 self.controlador.click_boton("]", escribir=True) #Cerrar corchetes                
                 
                 
