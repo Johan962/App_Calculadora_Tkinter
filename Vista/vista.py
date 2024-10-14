@@ -113,6 +113,8 @@ class CalculadoraVista:
                 self.controlador.click_boton("[", escribir=True) #Abrir corcehetes
             elif tecla == "bracketright":
                 self.controlador.click_boton("]", escribir=True) #Cerrar corchetes                
+            elif tecla == "period":
+                self.controlador.click_boton(".", escribir=True) #Cerrar corchetes                
                 
                 
     def crearBoton(self, valor, escribir=True, ancho=9, alto=1):

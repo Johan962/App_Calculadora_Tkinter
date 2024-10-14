@@ -75,7 +75,10 @@ class CalculadoraControlador:
 
                     # Reiniciar el stack de undo_redo y agregar cada carácter de la expresión
                     self.modelo.undo_redo.make_empty()  # Vaciar el stack
+                    i = 0
                     for char in self.modelo.expresion:
+                        i += 1
+                        print(i)
                         if char is not " ":
                             self.modelo.undo_redo.inputChar(char)  # Agregar cada carácter al stack de undo_redo
                     self.modelo.expresion_anterior = ""
