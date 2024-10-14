@@ -25,7 +25,16 @@ Una calculadora simple construida con Python y Tkinter, que permite realizar ope
 
     ```bash
     cd App_Calculadora_Tkinter
-    python main.py
+3. Navega al directorio dist
+    ```
+    cd dist
+
+4. Ejecuta el ejecutable haciendo doble click izquierdo o usando el siguiente comando:
+    ```bash
+    ./main
+
+
+
 ## Uso
 - Ingrese números y operaciones utilizando los botones en la interfaz gráfica o el teclado.
 - Presione = para calcular el resultado.
