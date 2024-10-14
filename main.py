@@ -20,4 +20,3 @@ if __name__ == "__main__":
 
     # Iniciar el bucle principal de la interfaz gráfica de usuario
     ventana_principal.mainloop()
-    

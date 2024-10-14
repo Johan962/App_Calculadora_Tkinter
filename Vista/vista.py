@@ -22,9 +22,9 @@ class CalculadoraVista:
         self.pantalla_result.grid(row=1, column=1, columnspan=2)  # Coloca la pantalla de resultados en la cuadrícula
         
         # Creación de botones de deshacer y rehacer
-        self.botonU = self.crearBoton("<", escribir=False)  # Botón para deshacer
+        self.botonU = self.crearBoton(u"\u2190", escribir=False)  # Botón para deshacer
         self.botonU.config(state="disabled")  # Inicialmente deshabilitado
-        self.botonR = self.crearBoton(">", escribir=False)  # Botón para rehacer
+        self.botonR = self.crearBoton(u"\u2192", escribir=False)  # Botón para rehacer
         self.botonR.config(state="disabled")  # Inicialmente deshabilitado
 
         # Creación de botones numéricos y de operación
@@ -82,16 +82,16 @@ class CalculadoraVista:
         tecla = event.keysym  # Obtiene la tecla presionada
         if event.state & 0x0004:  # Verifica si Ctrl está presionado
             if tecla == 'z':
-                self.controlador.click_boton("<", escribir=False)  # Deshacer
+                self.controlador.click_boton(u"\u2190", escribir=False)  # Deshacer
             elif tecla == 'y':
-                self.controlador.click_boton(">", escribir=False)  # Rehacer
+                self.controlador.click_boton(u"\u2192", escribir=False)  # Rehacer
         else:
             if tecla in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
                 self.controlador.click_boton(tecla, escribir=True)  # Presionada una tecla numérica
             elif tecla in ['plus', 'minus', 'asterisk', 'slash']:
                 operadores = {'plus': '+', 'minus': '-', 'asterisk': '*', 'slash': '/'}
                 self.controlador.click_boton(operadores[tecla], escribir=True)  # Mapeo de operaciones
-            elif tecla == 'equal':
+            elif tecla == 'equal' or tecla == "Return":
                 self.controlador.click_boton('=', escribir=False)  # Presionada la tecla igual
             elif tecla == 'BackSpace':
                 self.controlador.click_boton(u"\u232B", escribir=False)  # Mapeo al botón de borrar
@@ -101,7 +101,20 @@ class CalculadoraVista:
                 self.controlador.click_boton(u"\u221A", escribir=True)  # Raíz cuadrada (sqrt)
             elif tecla == 'asciicircum':
                 self.controlador.click_boton("^", escribir=True)  # Potencia
- 
+            elif tecla == "(":
+                self.controlador.click_boton("(", escribir=True) #Abrir parentesis
+            elif tecla == ")":
+                self.controlador.click_boton(")", escribir=True) #Cerrar parentesis
+            elif tecla == "{":
+                self.controlador.click_boton("{", escribir=True) #Abrir llaves
+            elif tecla == "}":
+                self.controlador.click_boton("}", escribir=True) #Cerrar llaves
+            elif tecla == "[":
+                self.controlador.click_boton("[", escribir=True) #Abrir corcehetes
+            elif tecla == "]":
+                self.controlador.click_boton("]", escribir=True) #Cerrar corchetes                
+                
+                
     def crearBoton(self, valor, escribir=True, ancho=9, alto=1):
         # Crea un botón y lo asocia con el controlador
         return Button(text=valor, width=ancho, height=alto, font=("Helvetica", 15),

@@ -60,7 +60,7 @@ class CalculadoraControlador:
                 self.vista.habilitar_boton_undo()  # Habilitar botón de deshacer
                 self.vista.deshabilitar_boton_redo()  # Deshabilitar botón de rehacer
 
-            elif texto == "<":  # Operación de Undo
+            elif texto == u"\u2190":  # Operación de Undo
                 if self.modelo.expresion_anterior != "":
                     # Recuperar la expresión anterior
                     self.modelo.expresion = self.modelo.expresion_anterior
@@ -76,12 +76,9 @@ class CalculadoraControlador:
                     # Reiniciar el stack de undo_redo y agregar cada carácter de la expresión
                     self.modelo.undo_redo.make_empty()  # Vaciar el stack
                     for char in self.modelo.expresion:
-                        self.modelo.undo_redo.inputChar(char)  # Agregar cada carácter al stack de undo_redo
-
-                    # Deshabilitar el botón de Undo una vez que se ha restaurado la expresión
-                    self.vista.deshabilitar_boton_undo()
-                    self.modelo.borrar_ultimo()  # Borrar el último carácter de la pantalla
-                    self.vista.eliminar_ultimo_pantalla()
+                        if char is not " ":
+                            self.modelo.undo_redo.inputChar(char)  # Agregar cada carácter al stack de undo_redo
+                    self.modelo.expresion_anterior = ""
 
                 else:
                     # Operación normal de undo
@@ -92,7 +89,7 @@ class CalculadoraControlador:
                     self.vista.limpiar_pantalla()
                     self.vista.mostrar_en_pantalla(self.modelo.expresion)
 
-            elif texto == ">":
+            elif texto == u"\u2192":
                 # Manejo de la operación de Rehacer (Redo)
                 self.modelo.redo_operacion()  # Realizar la operación de rehacer
                 self.vista.habilitar_boton_undo()  # Habilitar botón de deshacer
