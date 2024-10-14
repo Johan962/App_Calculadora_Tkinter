@@ -10,7 +10,7 @@ class CalculadoraVista:
         self.controlador = controlador  # Guarda la referencia al controlador
         # Configura la ventana principal
         ventana.title("Calculadora")  # Establece el título de la ventana
-        ventana.iconbitmap(icon_path) # Descomentar para establecer un ícono
+        #ventana.iconbitmap(icon_path) # Descomentar para establecer un ícono
         # Configuración de la pantalla para mostrar la expresión
         self.pantalla = Text(ventana, state="disabled", width=40, height=3,
                              background="white", foreground="blue", font=("Helvetica", 15))
